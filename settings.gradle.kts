@@ -1,0 +1,1 @@
+rootProject.name = "ru.search_university.search-university-backend"
