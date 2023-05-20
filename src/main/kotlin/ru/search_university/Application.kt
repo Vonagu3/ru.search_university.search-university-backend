@@ -1,5 +1,7 @@
 package ru.search_university
 
+import com.zaxxer.hikari.HikariConfig
+import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.cio.*
@@ -12,8 +14,11 @@ import ru.search_university.plugins.*
 
 fun main() {
 
-    Database.connect("jdbc:postgresql://localhost:5432/postgres", driver = "org.postgresql.Driver",
-    user = "postgres", password = "Irtuganov21021991")
+//    Database.connect("jdbc:postgresql://localhost:5432/postgres", driver = "org.postgresql.Driver",
+//    user = "postgres", password = "Irtuganov21021991")
+    val config = HikariConfig("hikari.properties")
+    val dataSource = HikariDataSource(config)
+    Database.connect(dataSource)
 
     embeddedServer(Netty, port = System.getenv("PORT").toInt(), module = Application::module)
         .start(wait = true)
