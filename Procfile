@@ -1,0 +1,1 @@
+web: ./build/install/ru.search_university.search-university-backend/bin/ru.search_university.search-university-backend
